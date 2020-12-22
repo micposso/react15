@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -5,10 +6,11 @@ import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-
+import data from "./data/data";
 import List from "./components/ListComponent";
 
 function App() {
+  const [months, setMonths] = useState(data);
   return (
     <Container className="p-3">
       <Row>
@@ -21,13 +23,17 @@ function App() {
                 Pick Month
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                {months.map((month) => {
+                  return (
+                    <Dropdown.Item>{Object.keys(month)[0]}</Dropdown.Item>
+                  )
+                })}
               </Dropdown.Menu>
             </Dropdown>
             <List />
             <>
-            <Button variant="primary">Clear All</Button>{' '}
-            <Button variant="success">Add Birthday</Button>
+              <Button variant="primary">Clear All</Button>{" "}
+              <Button variant="success">Add Birthday</Button>
             </>
           </Jumbotron>
         </Col>
