@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-import data from "./data/data";
 import List from "./components/ListComponent";
+
+import data from "./data/data";
 
 function App() {
   const [months, getMonths] = useState(data);
-  const [bdayMonth, setMonth] = useState('none');
+  const [people, setPeople] = useState(data);
   
   return (
     <Container className="p-3">
@@ -26,19 +28,21 @@ function App() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {months.map((month) => {
+                  let monthvalue = Object.keys(month);
+                  console.log(monthvalue);
                   return (
                     <Dropdown.Item 
-                    key={Object.keys(month)[0]} 
-                    value={Object.keys(month)[0]}
-                    onSelect={e => setMonth(Object.keys(month)[0])}
+                      key={monthvalue}
+                      value={monthvalue}
+                      onChange={e => getMonths(e.target.value)}
                     >
-                      {Object.keys(month)[0]}
+                      {monthvalue}
                     </Dropdown.Item>
                   )
                 })}
               </Dropdown.Menu>
             </Dropdown>
-            <List />
+            <List people={people} />
             <>
               <Button variant="primary">Clear All</Button>{" "}
               <Button variant="success">Add Birthday</Button>
