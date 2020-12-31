@@ -11,7 +11,7 @@ export default [
       },
       {
         id: 3,
-        name: 'Bertie Yates',
+        name: 'Memo Yates',
         year: 1989,
         day: 7,
         month: 11,
@@ -23,7 +23,7 @@ export default [
       february: [
         {
           id: 3,
-          name: 'Bertie Yates',
+          name: 'Loca Yates',
           year: 1955,
           day: 30,
           month: 12,
@@ -35,7 +35,7 @@ export default [
       march: [
         {
           id: 3,
-          name: 'Bertie Yates',
+          name: 'Caca Yates',
           year: 1955,
           day: 30,
           month: 12,

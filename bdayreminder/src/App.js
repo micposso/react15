@@ -12,29 +12,27 @@ import List from "./components/ListComponent";
 import data from "./data/data";
 
 function App() {
-  const [months, getMonths] = useState(data);
-  const [people, setPeople] = useState(data);
-  
+  const [months, setMonths] = useState('');
+
   return (
     <Container className="p-3">
       <Row>
         <Col></Col>
         <Col xs={6}>
           <Jumbotron>
-            <h1 className="header">BirthDays Calendar</h1>
+            <h1 className="header">Birthdays Calendar</h1>
             <Dropdown >
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Pick Month
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {months.map((month) => {
+                {data.map((month, key) => {
                   let monthvalue = Object.keys(month);
-                  console.log(monthvalue);
                   return (
                     <Dropdown.Item 
-                      key={monthvalue}
-                      value={monthvalue}
-                      onChange={e => getMonths(e.target.value)}
+                      key={key}
+                      eventKey={monthvalue}
+                      onSelect={e => setMonths(e)}
                     >
                       {monthvalue}
                     </Dropdown.Item>
@@ -42,7 +40,7 @@ function App() {
                 })}
               </Dropdown.Menu>
             </Dropdown>
-            <List people={people} />
+            <List people={data} />
             <>
               <Button variant="primary">Clear All</Button>{" "}
               <Button variant="success">Add Birthday</Button>
