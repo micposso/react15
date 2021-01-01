@@ -12,7 +12,11 @@ import List from "./components/ListComponent";
 import data from "./data/data";
 
 function App() {
-  const [months, setMonths] = useState('');
+  // get month
+  const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+  const date = new Date();
+  const currentMonth = monthsYear[date.getMonth()];
+  const [months, setMonths] = useState(currentMonth);
 
   return (
     <Container className="p-3">
@@ -40,7 +44,7 @@ function App() {
                 })}
               </Dropdown.Menu>
             </Dropdown>
-            <List people={data} />
+            <List people={data} month={months} currentMonth={currentMonth} />
             <>
               <Button variant="primary">Clear All</Button>{" "}
               <Button variant="success">Add Birthday</Button>

@@ -1,9 +1,9 @@
 export default [
   {
-    january: [
+    January: [
       {
         id: 1,
-        name: 'Bertie Yates',
+        name: 'January Yates',
         year: 1981,
         day: 4,
         month: 1,
@@ -11,7 +11,7 @@ export default [
       },
       {
         id: 3,
-        name: 'Memo Yates',
+        name: 'January Yates',
         year: 1989,
         day: 7,
         month: 11,
@@ -20,10 +20,10 @@ export default [
     ]
   },
     {
-      february: [
+      February: [
         {
           id: 3,
-          name: 'Loca Yates',
+          name: 'February Yates',
           year: 1955,
           day: 30,
           month: 12,
@@ -32,15 +32,35 @@ export default [
     ]
     },
     {
-      march: [
+      March: [
         {
           id: 3,
-          name: 'Caca Yates',
+          name: 'March Yates',
           year: 1955,
           day: 30,
           month: 12,
           image: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg',
         }
     ]
+    },
+    {
+      December: [
+        {
+          id: 1,
+          name: 'December Yates',
+          year: 1981,
+          day: 4,
+          month: 1,
+          image: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg',
+        },
+        {
+          id: 3,
+          name: 'December Yates',
+          year: 1989,
+          day: 7,
+          month: 11,
+          image: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg',
+        }
+      ]
     },
 ];
