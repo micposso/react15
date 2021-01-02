@@ -1,33 +1,53 @@
+import React, { useState } from "react";
 import "./App.css";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-
 import List from "./components/ListComponent";
 
+import data from "./data/data";
+
 function App() {
+  // get month
+  const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+  const date = new Date();
+  const currentMonth = monthsYear[date.getMonth()];
+  const [months, setMonths] = useState(currentMonth);
+
   return (
     <Container className="p-3">
       <Row>
         <Col></Col>
         <Col xs={6}>
           <Jumbotron>
-            <h1 className="header">BirthDays Calendar</h1>
-            <Dropdown>
+            <h1 className="header">Birthdays Calendar</h1>
+            <Dropdown >
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Pick Month
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                {data.map((month, key) => {
+                  let monthvalue = Object.keys(month);
+                  return (
+                    <Dropdown.Item 
+                      key={key}
+                      eventKey={monthvalue}
+                      onSelect={e => setMonths(e)}
+                    >
+                      {monthvalue}
+                    </Dropdown.Item>
+                  )
+                })}
               </Dropdown.Menu>
             </Dropdown>
-            <List />
+            <List people={data} month={months} currentMonth={currentMonth} />
             <>
-            <Button variant="primary">Clear All</Button>{' '}
-            <Button variant="success">Add Birthday</Button>
+              <Button variant="primary">Clear All</Button>{" "}
+              <Button variant="success">Add Birthday</Button>
             </>
           </Jumbotron>
         </Col>
