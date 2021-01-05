@@ -11,7 +11,7 @@ export default [
       },
       {
         id: 3,
-        name: 'January Yates',
+        name: 'January Segundo',
         year: 1989,
         day: 7,
         month: 11,
@@ -55,7 +55,7 @@ export default [
         },
         {
           id: 3,
-          name: 'December Yates',
+          name: 'Loca Yates',
           year: 1989,
           day: 7,
           month: 11,
