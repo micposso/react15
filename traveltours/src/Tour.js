@@ -21,11 +21,11 @@ const useStyles = makeStyles({
   },
 });
 
-const Tour = ({id, image, info, price, name}) => {
+const Tour = ({ id, image, info, price, name, removeTour }) => {
 
   const [readMore, setReadMore] = useState(false);
   const classes = useStyles();
-
+  console.log(removeTour);
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -48,7 +48,7 @@ const Tour = ({id, image, info, price, name}) => {
         <Button size="small" color="primary" onClick={() => setReadMore(!readMore)}>
           {readMore ? 'show less' : 'read more'}
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => removeTour(id)}>
          Not Interested
         </Button>
       </CardActions>
