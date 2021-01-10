@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
+    headline: {
+      textAlign: "center"
+    }
   })
 );
 
@@ -28,6 +31,7 @@ function App() {
     <div className={classes.root}>
       <Container maxWidth="sm" fixed>
         <Grid item xs={12}>
+          <h1 className={classes.headline}>Product Reviews</h1>
           <Reviews />
         </Grid>
       </Container>

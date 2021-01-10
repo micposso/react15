@@ -1,9 +1,16 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
+import people from "./data";
+
+import Grid, { GridSpacing } from "@material-ui/core/Grid";
+import Box from '@material-ui/core/Box';
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,29 +25,35 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       margin: "auto",
     },
+    navigation: {
+      display: "flex",
+      justifyContent: "center",
+    },
   })
 );
 
 const Reviews = () => {
+  const [index, setIndex] = useState(0);
+  const { name, job, image, text } = people[index];
+
   const classes = useStyles();
 
   return (
     <Paper elevation={3} className={classes.paper}>
-      <Avatar
-        className={classes.avatar}
-        alt="Remy Sharp"
-        src="/static/images/avatar/1.jpg"
-      />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin congue
-        imperdiet lobortis. Etiam sit amet pulvinar diam. Integer imperdiet dui
-        urna, consectetur feugiat tellus dictum nec. Nunc feugiat nec velit in
-        ultrices. Duis sed tortor cursus, laoreet nibh a, fermentum eros.
-        Praesent in eros sit amet tellus interdum suscipit. Praesent aliquam
-        vestibulum pharetra. Quisque ut maximus nisl. Nullam iaculis lectus est,
-        id lacinia odio euismod sed.
-      </p>
-      <Button variant="contained">Next</Button>
+      <Avatar className={classes.avatar} alt={name} src={image} />
+      <h2>{name}</h2>
+      <h4>{job}</h4>
+      <p>{text}</p>
+      <Box m="2rem">
+          <Button variant="contained" color="secondary">Surprise me!</Button>
+      </Box>
+     
+      <Grid container className={classes.navigation}>
+        <Grid item>
+          <ArrowBackIosIcon />
+          <ArrowForwardIosIcon />
+        </Grid>
+      </Grid>
     </Paper>
   );
 };
