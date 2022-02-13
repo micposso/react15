@@ -1,3 +1,17 @@
+.error {
+  border: 1px solid red;
+}
+
+.container-colors {
+  display: flex;
+  flex-direction: row;
+}
+
+.color-box {
+  height: 20%;
+  width: 300px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
