@@ -4,7 +4,7 @@ import Values from "values.js";
 import "./App.css";
 
 function App() {
-  const [color, setColor] = useState('#000')
+  const [color, setColor] = useState('')
   const [error, setError] = useState(false)
   const [list, setList] = useState([])
 
