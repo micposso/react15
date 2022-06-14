@@ -1,15 +1,15 @@
-const app = require('express')();
+const express = require('express');
+const cors = require('cors');
+const app = express();
 const PORT = 8080;
 
-// start the server
-app.listen(
-  PORT,
-  () => console.log(`server running in ${PORT}`)
-);
+// start the server with json parser
+app.use(express.json());
+app.use(cors());
 
 // add end-point
 app.get('/resume', (req, res) => {
-  res.status(200).send({
+  res.status(200).send([{
     "id":"recAGJfiU4CeaV0HL",
     "order":3,
     "title":"Full Stack Web Developer",
@@ -20,5 +20,10 @@ app.get('/resume', (req, res) => {
        "Butcher drinking vinegar franzen authentic messenger bag copper mug food truck taxidermy. Mumblecore lomo echo park readymade iPhone migas single-origin coffee franzen cloud bread tilde vegan flexitarian."
     ],
     "company":"TOMMY"
-  })
+  }])
 })
+
+
+app.listen(PORT, () => {
+  console.log(`Server is up on port ${PORT}`);
+});
