@@ -18,7 +18,7 @@ function App() {
       console.log(e);
     }
   };
-  // for performing side effects in the components, good for fetching data and added it to the dom when is ready
+  // for performing side effects in the components, good for fetching data and added it to the dom when is ready. The array stores what has changed when the app renders
   useEffect(() => {
     fetchJobs();
   }, []);
@@ -30,8 +30,17 @@ function App() {
       </section>
     );
   }
-
-  return <h1>Tabs Project Setup</h1>;
+  const { title, dates, duties, company } = jobs[value];
+  return (
+    <div>
+      <h1>{title}</h1>
+      {duties.map((duty, index) => {
+        return (
+          <div>{duty}</div>
+          )
+      })}
+    </div>
+  )
 }
 
 export default App;
