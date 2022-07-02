@@ -1,12 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import PostsList from "./features/posts/postList"
 
 function App() {
   return (
     <main className="App">
-
+      <PostsList />
     </main>
   );
 }
