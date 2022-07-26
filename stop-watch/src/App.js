@@ -18,6 +18,8 @@ function App() {
       clearInterval(interval);
     }
 
+    return () =>  clearInterval(interval);
+
   }, [timerOn]);
 
   return (
@@ -26,9 +28,9 @@ function App() {
         <div className="time">{time}</div>
         <div className="buttons-container">
           <button onClick={() => setTimerOn(true)}>Start</button>
-          <button onClick={() => console.log("click")}>Pause</button>
-          <button onClick={() => console.log("click")}>Resume</button>
-          <button onClick={() => console.log("click")}>Clear</button>
+          <button onClick={() => setTimerOn(false)}>Pause</button>
+          <button onClick={() => setTimerOn(true)}>Resume</button>
+          <button onClick={() => setTime(0)}>Clear</button>
         </div>
       </div>
     </div>
