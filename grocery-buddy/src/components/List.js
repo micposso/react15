@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-function ListComponent() {
-  return <h2>List Component</h2>
+function ListComponent({items}) {
+  return (
+    <div>
+      {items.map((item) => {
+        const { id, title } = item;
+         return <article key={id}>
+          <h5>{title}</h5>
+         </article>
+      })}
+    </div>
+  )
 }
 
 export default ListComponent;

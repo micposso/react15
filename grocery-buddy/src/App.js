@@ -11,16 +11,28 @@ import { styled } from '@mui/material/styles';
 
 import ListComponent from "./components/List";
 import AlertComponent from "./components/Alert";
+import { List } from "@mui/material";
 
 function App() {
   const [item, setItem] = useState("");
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(false);
-  const [alert, setAlert] = useState({ show: true, msd: "", type: "" });
+  const [alert, setAlert] = useState({ show: false, msd: "", type: "" });
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("form")
+    // conditional to handle what happens after adding item
+    if(!item) {
+      // show alert
+    } else if (item && isEditing) {
+      // deal with the item
+    } else {
+      // show alert
+      const newItem = {id: new Date().getTime().toString(), title: item};
+      setList([...list, newItem])
+      setItem('');
+    }
   }
   return (
     <div>
@@ -37,7 +49,8 @@ function App() {
                 </Button>
                 </form>
               </Box>
-            <ListComponent />
+              { /* only show list if there is an list item */ }
+            <ListComponent items={list} />
           </Paper>
         </Container>
       </Grid>
