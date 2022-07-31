@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import * as React from 'react';
+import Alert from '@mui/material/Alert';
 
 function AlertComponent() {
-  return <h2>List Component</h2>
+  return <Alert severity="error">This is an error alert — check it out!</Alert>
+
 }
 
 export default AlertComponent;
