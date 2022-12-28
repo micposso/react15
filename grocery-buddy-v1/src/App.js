@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import List from "./components/ListComponent";
 import Alert from "./components/AlertComponent";
 
@@ -17,22 +17,49 @@ import Alert from "./components/AlertComponent";
 // need a reference of what is being edited, and that is an I
 // alert will need an object, with visibility status, message and type
 
-
 function App() {
-  const [ name, setName ] = useState('');
-  const [ list, setList ] = useState([]);
-  const [ isEditing, setIsEditing ] = useState(false);
-  const [ alert, setAlert ] = useState({show: false, msg:'', type: ''});
-  
-  const handleSubmit = () => {};
-  return (
-<section className="section-center">
-  <form action="grocery-form" onSubmit={handleSubmit}>
+  const [itemName, setItemName] = useState("");
+  const [list, setList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
 
-  </form>
-  <List />
-  <button className="clear-btn">Clear List</button>
-</section>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!itemName) {
+      // display alert error
+    } else if (itemName && isEditing) {
+      // deal with edit state
+    } else {
+      // procceed with saving item on list state and show sucess alert message
+      // items need a unique ID
+      const newItem = { id: new Date().getTime().toString(), title: itemName };
+      setList([...list, newItem]);
+      setItemName("");
+    }
+  };
+
+  return (
+    <section className="section-center">
+      <h3>Grocery Buddy</h3>
+      <form action="grocery-form" onSubmit={handleSubmit}>
+        {alert.show && <Alert />}
+        <div className="form-control">
+          <input
+            type="text"
+            className="grocery"
+            placeholder="eggs, milk etc"
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
+          {/* button text is based on the state */}
+          <button type="submit" className="submit-btn">
+            {isEditing ? "edit item" : "add item"}
+          </button>
+        </div>
+      </form>
+      <List items={list} />
+      <button className="clear-btn">Clear List</button>
+    </section>
   );
 }
 
