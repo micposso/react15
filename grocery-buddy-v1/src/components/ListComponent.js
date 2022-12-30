@@ -5,10 +5,9 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 // map function should return jsx
 // when destructuring, use the same key names of the original object
 
-const List = ({ items }) => {
+const List = ({ items, removeItem }) => {
   return (
     <div class="item-list">
-      <h3>list</h3>
       {items.map((item) => {
         // destructure object
         const { id, title } = item;
@@ -19,7 +18,10 @@ const List = ({ items }) => {
               <button className="edit btn">
                 <FaEdit />
               </button>
-              <button className="edit btn">
+              <button
+                className="edit btn"
+                onClick={() => removeItem(id, title)}
+              >
                 <FaTrash />
               </button>
             </div>

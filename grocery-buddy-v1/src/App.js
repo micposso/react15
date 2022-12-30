@@ -44,8 +44,19 @@ function App() {
     }
   };
 
+  // helper function to allow changing values in the state from different conditions
   const showAlert = (show = false, type = "", msg = "") => {
     setAlert({ show, type, msg });
+  };
+  // clear list
+  const clearList = () => {
+    showAlert(true, "danger", "list is empty");
+    setList([]);
+  };
+  // remove individual items
+  const removeItem = (id, title) => {
+    showAlert(true, "danger", `${title} has been removed`);
+    setList(list.filter((item) => item.id !== id));
   };
 
   return (
@@ -67,8 +78,10 @@ function App() {
           </button>
         </div>
       </form>
-      <List items={list} />
-      <button className="clear-btn">Clear List</button>
+      <List items={list} removeItem={removeItem} />
+      <button className="clear-btn" onClick={clearList}>
+        Clear List
+      </button>
     </section>
   );
 }
