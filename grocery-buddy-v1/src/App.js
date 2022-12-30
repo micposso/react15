@@ -22,9 +22,9 @@ function App() {
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [alert, setAlert] = useState({
-    show: false,
-    msg: "hello world",
-    type: "success",
+    show: null,
+    msg: "",
+    type: "",
   });
 
   const handleSubmit = (e) => {
@@ -40,14 +40,19 @@ function App() {
       const newItem = { id: new Date().getTime().toString(), title: itemName };
       setList([...list, newItem]);
       setItemName("");
+      showAlert(true, "success", "item added!");
     }
+  };
+
+  const showAlert = (show = false, type = "", msg = "") => {
+    setAlert({ show, type, msg });
   };
 
   return (
     <section className="section-center">
       <h3>Grocery Buddy</h3>
       <form action="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
         <div className="form-control">
           <input
             type="text"
