@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Alert = ({ msg, type, removeAlert }) => {
+const Alert = ({ msg, type, removeAlert, list }) => {
   // use useEffect hook, which will be triggered when the component renders
   if (removeAlert) {
     console.log("works");
@@ -11,7 +11,7 @@ const Alert = ({ msg, type, removeAlert }) => {
     }, 3000);
     // cleat the funtions
     return () => clearInterval(timeout);
-  }, []);
+  }, [list]);
 
   // construct a css class from the string in the state
   return <p className={`alert alert-${type}`}>{msg}</p>;
