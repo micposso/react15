@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 type CounterProps = {
-  setCount: React.Dispatch<React.SetStateAction<number | null>>
+  setCount:  React.Dispatch<React.SetStateAction<number>>
   children: ReactNode
 }
 const Counter = ({ setCount, children }: CounterProps) => {

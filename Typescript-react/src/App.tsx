@@ -4,10 +4,11 @@ import './App.css'
 import Heading from './components/Heading'
 import { Section } from './components/Section'
 import Counter from './components/Counter'
+import List from "./components/List"
 
 
 function App() {
-  const [count, setCount] = useState<number | null>(1)
+  const [count, setCount] = useState<number>(1)
 
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
       This content goes inside the children and it gets passed as a react node, is not a prop 
       </Section>
       <Counter setCount={setCount}>Count is {count}</Counter>
+      <List items={["coffee", "bananas", "Apples", "Pineaples"]} render={(item: string) => <span>{item}</span>} />
       </>
     </div>
   )
