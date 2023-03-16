@@ -21,6 +21,7 @@ function App() {
   const [itemName, setItemName] = useState("");
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
     show: null,
     msg: "",
@@ -34,6 +35,7 @@ function App() {
       setAlert({ show: true, msg: "please enter value", type: "danger" });
     } else if (itemName && isEditing) {
       // deal with edit state
+      
     } else {
       // procceed with saving item on list state and show sucess alert message
       // items need a unique ID
@@ -48,11 +50,34 @@ function App() {
     setAlert({ show, type, msg });
   };
 
+// add the remove all items function
+
+  const clearList = () => {
+    showAlert(true, 'danger', 'empty list');
+    setList([]);
+  }
+
+// add the edit and remove item function on the buttons
+const removeItem = (id) => {
+  console.log("remove function works");
+  showAlert(true, 'danger', 'item removed');
+  setList(list.filter((item) => item.id !== id));
+} 
+
+const editItem = (id) => {
+// need to return the item that matches the id
+const specificItem = list.find((item) => item.id === id);
+setIsEditing(true);
+setEditID(id);
+// grab title value
+setItemName(specificItem.title);
+}
+
   return (
     <section className="section-center">
       <h3>Grocery Buddy</h3>
       <form action="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
         <div className="form-control">
           <input
             type="text"
@@ -67,10 +92,12 @@ function App() {
           </button>
         </div>
       </form>
-      <List items={list} />
-      <button className="clear-btn">Clear List</button>
+      {/* pass the removeItem as a prop so it can be used in the component */}
+      <List items={list} removeItem={removeItem} editItem={editItem} />
+      <button className="clear-btn" onClick={clearList}>Clear List</button>
     </section>
   );
 }
 
 export default App;
+
