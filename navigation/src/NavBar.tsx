@@ -10,13 +10,18 @@ const NavBar = () => {
       <div>
         <IoLogoAppleAr />
       </div>
-      <div className="class">
+      <div className="flex space-x-4">
         {links.map((items: { text: any; link: any; }) => {
         
           const { text, link } = items;
           return (
             <div key={text}>
-              <a href={link}>{text}</a>
+              <a
+                className="block hover:bg-blue-500 hover:text-white px-2 py-1 rounded-md"
+                href={link}
+              >
+                {text}
+              </a>
             </div>
           );
         })}
