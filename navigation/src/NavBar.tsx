@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { IoLogoAppleAr } from "react-icons/io5";
-import { links } from "./data";
+import { links, social } from "./data";
 import './App.css';
 
 
@@ -38,7 +38,28 @@ const NavBar = () => {
         })}
       </div>
         
-)};
+      )}
+      
+      <ul className="flex space-x-4">
+        {social.map((items: { id: any; text: any; url: any; icon: any }) => {
+          const { id, url, icon, text } = items;
+          const SocialIconComponent = icon;
+          return (
+            <li key={id}>
+              <a
+                href={url}
+                className="text-blue-500 hover:text-blue-700"
+                target="_blank"
+                rel="noopener noreferrer"
+                title={text}
+              >
+                <SocialIconComponent alt={text} />
+              </a>
+            </li>
+          );
+        }
+        )}
+      </ul>
 
       <div>
         <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#fff] hover:text-black">
