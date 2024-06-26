@@ -1,8 +1,6 @@
 
 const Hero = () => {
-  return (
-    <h1>Hero</h1>
-  )
+  return <h1 className="text-3xl font-bold underline">Hero</h1>;
 }
 
 
